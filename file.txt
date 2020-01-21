@@ -1,2 +1,7 @@
 garlic naan and tandoori chicken
+<<<<<<< HEAD
 beef
+=======
+sheep
+duck
+>>>>>>> 75aae6121179e0cb207ae6a91d301bdd11f0dabc
