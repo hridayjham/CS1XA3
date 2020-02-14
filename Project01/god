@@ -2,7 +2,12 @@
 WDIR="$1"
 cd "$WDIR"
 if [ "$2" ] ; then
+	
 	touch fixme.log
-	find -type f -exec tail -n1 {} + | grep -r -H "#FIXME" > ./fixme.log
+	find . -type f -print0 | while IFS= read -d '#FIXME' file
+	do
+  		# print every file
+  		echo $file >> ./fixme.log
+	done
 fi
 echo "finished"

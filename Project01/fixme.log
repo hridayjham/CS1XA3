@@ -1,4 +1,7 @@
-.fixme.log:(standard input):#FIXME beta
-testfile2:adfbouiwefhwoifj #FIXME djisjiwfww
-testfile:#FIXME beta
-god:	find -type f -exec tail -n1 {} + | grep -r -H "#FIXME" > ./fixme.log
+(standard input):#FIXME beta
+./project_analyze.sh
+./testfile2
+./testfile
+./god
+./fixme.log
+./README.md
