@@ -1,0 +1,8 @@
+#!/bin/bash
+WDIR="$1"
+cd "$WDIR"
+if [ "$2" ] ; then
+	touch fixme.log
+	find -type f -exec tail -n1 {} + | grep -r -H "#FIXME" > ./fixme.log
+fi
+echo "finished"
