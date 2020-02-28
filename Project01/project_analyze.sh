@@ -51,6 +51,9 @@ feature6(){
 	echo "$( grep -E '^#' $file | grep -w $tag)" >> $tag.log
 }
 
+feature4(){
+	ls -S -lh | awk '{print $9, $5}'
+}
 
 if [ "$test" -eq 1 ] ; then
 	feature2
@@ -61,6 +64,9 @@ fi
 
 if [ "$test" -eq 3 ] ; then
 	feature6
+fi
+if [ "$test" -eq 4 ] ; then
+        feature4
 fi
 echo "finished"
 
