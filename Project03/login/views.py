@@ -3,8 +3,11 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib import messages
-
+#from django.contrib.auth.models import User
 from social import models
+
+#from mysite.core.forms import SignUpForm
+
 
 def login_view(request):
     """Serves lagin.djhtml from /e/macid/ (url name: login_view)
@@ -63,7 +66,19 @@ def signup_view(request):
     form = None
 
     # TODO Objective 1: implement signup view
-
-    context = { 'signup_form' : form }
-
-    return render(request,'signup.djhtml',context)
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            #form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            models.UserInfo.objects.create_user_info(username=username, password=password)
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('social:messages_view')
+    else:
+        form = UserCreationForm()
+    return render(request, 'signup.djhtml', {'form': form})
+#    context = { 'signup_form' : form }
+    # yaha tak teepa hai
+#    return render(request,'signup.djhtml',context)

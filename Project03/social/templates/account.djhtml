@@ -9,6 +9,11 @@
                 <div class="w3-container w3-padding">
                     <h6 class="w3-opacity">Change Password</h6>
                     <!--                     TODO Objective 3: Add Password Change Form -->
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Save changes</button>
+</form>  
                 </div>
             </div>
         </div>

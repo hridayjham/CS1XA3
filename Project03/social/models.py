@@ -6,8 +6,7 @@ class Interest(models.Model):
 
 class UserInfoManager(models.Manager):
     def create_user_info(self, username, password):
-        user = User.objects.create_user(username=username,
-                                    password=password)
+        user = User.objects.create_user(username=username,password=password)
         userinfo = self.create(user=user)
         return userinfo
 
